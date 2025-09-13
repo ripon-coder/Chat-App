@@ -35,6 +35,8 @@ A real-time chat application built with **Laravel**, **Laravel Echo**, **Reverb 
 **Responsive Design**
 ![Responsive](https://static.thenounproject.com/png/responsive-design-icon-67425-512.png)
 
+![landing screenshot](image.png)
+
 ---
 
 ## 🚀 Installation & Setup
