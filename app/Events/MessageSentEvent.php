@@ -15,11 +15,14 @@ class MessageSentEvent implements ShouldBroadcastNow
     public $receiverId;   // receiver user ID
     public $message;
 
-    public function __construct($sender, $receiverId, $message)
+    public $name;
+
+    public function __construct($sender, $receiverId, $message,$name)
     {
         $this->sender = $sender;
         $this->receiverId = $receiverId; // set receiver ID
         $this->message = $message;
+        $this->name = $name;
     }
 
     public function broadcastOn(): PrivateChannel
@@ -38,7 +41,7 @@ class MessageSentEvent implements ShouldBroadcastNow
             'message' => $this->message,
             'sender' => [
                 'id' => $this->sender->id ?? null,
-                'name' => $this->sender->name ?? 'Guest',
+                'name' => $this->name ?? 'Guest',
             ],
         ];
     }

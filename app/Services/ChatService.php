@@ -21,7 +21,7 @@ class ChatService
 
     public function send($authId, $userId)
     {
-        broadcast(new MessageSentEvent($authId, $userId, request()->message));
+        broadcast(new MessageSentEvent($authId, $userId, request()->message,auth()->user()->name))->toOthers();
         return $this->chatRepository->send($authId, $userId);
     }
 }
