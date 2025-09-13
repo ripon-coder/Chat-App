@@ -32,9 +32,6 @@ A real-time chat application built with **Laravel**, **Laravel Echo**, **Reverb 
 **Landing Page**
 ![Landing Page](https://img.icons8.com/color/96/000000/chat.png)
 
-**Chat Inbox**
-![Chat Inbox](https://img.icons8.com/color/96/000000/chat-bubble.png)
-
 **Responsive Design**
 ![Responsive](https://static.thenounproject.com/png/responsive-design-icon-67425-512.png)
 
@@ -61,6 +58,10 @@ cp .env.example .env
 # Install npm dependencies inside the container
 ./vendor/bin/sail npm install
 ./vendor/bin/sail npm run dev
+
+# Reverb Port
+REVERB_HOST=host.docker.internal
+REVERB_PORT=6001
 
 # Reverb Start
 ./vendor/bin/sail artisan reverb:start --host=0.0.0.0 --port=6001 --debug
