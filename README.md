@@ -29,13 +29,12 @@ A real-time chat application built with **Laravel**, **Laravel Echo**, **Reverb 
 
 ## 📷 Screenshots
 
-**Landing Page**
-![Landing Page](https://img.icons8.com/color/96/000000/chat.png)
+![landing screenshot](image.png)
 
 **Responsive Design**
-![Responsive](https://static.thenounproject.com/png/responsive-design-icon-67425-512.png)
+![Responsive](image-1.png)
 
-![landing screenshot](image.png)
+
 
 ---
 
