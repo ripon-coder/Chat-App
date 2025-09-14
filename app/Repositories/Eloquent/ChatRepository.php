@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Repositories\Eloquent;
 
 use App\Models\Chat;
 use App\Repositories\Contracts\ChatRepositoryContract;
+
 class ChatRepository implements ChatRepositoryContract
 {
     public function chat($authId, $userId)

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Repositories\Eloquent;
 
 use App\Models\User;
@@ -8,6 +9,6 @@ class UserRepository implements UserRepositoryContract
 {
     public function all($authId)
     {
-        return User::whereNot("id",$authId)->orderByDesc("id")->get();
+        return User::whereNot('id', $authId)->orderByDesc('id')->get();
     }
 }

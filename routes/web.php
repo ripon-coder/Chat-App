@@ -3,8 +3,8 @@
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,20 +20,15 @@ Broadcast::routes(['middleware' => ['auth']]);
 
 Route::get('/', function () {
     return view('welcome');
-});
-
+})->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/chat/user/{userid}', [ChatController::class, 'index'])->name('chat.index');
     Route::post('/send/user', [ChatController::class, 'send'])->name('chat.send');
-
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-
-
-
+require __DIR__.'/auth.php';
