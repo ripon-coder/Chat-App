@@ -65,4 +65,4 @@ REVERB_HOST=host.docker.internal
 REVERB_PORT=6001
 
 # Reverb Start
-./vendor/bin/sail artisan reverb:start --host=0.0.0.0 --port=6001 --debug
+./vendor/bin/sail artisan reverb:start --host=0.0.0.0 --port=7001 --debug
