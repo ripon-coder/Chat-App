@@ -8,10 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, InteractsWithMedia, Notifiable;
+
+    public static $defultImage = 'default.jpg';
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +53,17 @@ class User extends Authenticatable
     public function getPassAttribute()
     {
         return 'password';
+    }
+
+    public function getImageAttribute()
+    {
+        $media = $this->getMedia('profile')->last();
+        if ($media) {
+            return ['url' => $media->getUrl(), 'name' => $media->name, 'human_readable_size' => $media->human_readable_size];
+        } else {
+            return ['url' => asset(self::$defultImage), 'name' => 'default.jpg', 'human_readable_size' => 'unknown'];
+        }
+
     }
 
     protected function password(): Attribute

@@ -4,11 +4,25 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryContract;
+use App\Services\UserFilter;
 
 class UserRepository implements UserRepositoryContract
 {
-    public function all($authId)
+    protected $userFilter;
+
+    public function __construct(UserFilter $userFilter)
     {
-        return User::whereNot('id', $authId)->orderByDesc('id')->get();
+        $this->userFilter = $userFilter;
+    }
+
+    public function all($authId, $filterData = [])
+    {
+        $query = User::with('media')->whereNot('id', $authId)->orderByDesc('id');
+        $query = $this->userFilter->getResults([
+            'query' => $query,
+            'filter' => $filterData,
+        ]);
+
+        return $query;
     }
 }

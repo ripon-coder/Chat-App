@@ -13,9 +13,11 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-    public function getAllUsers($authId)
+    public function getAllUsers($authId, $requestData = [])
     {
-        return $users = $this->userRepository->all($authId);
+        $query = $this->userRepository->all($authId, $requestData);
+
+        return $query->paginate(10)->withQueryString();
 
     }
 }

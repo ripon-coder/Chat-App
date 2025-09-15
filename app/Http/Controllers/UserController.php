@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\UserService;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -14,9 +15,10 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data['users'] = $this->userService->getAllUsers(auth()->id()); // except login user id
+        $requestData = $request->only(['name', 'email']);
+        $data['users'] = $this->userService->getAllUsers(auth()->id(), $requestData); // except login user id
 
         return view('users', $data);
     }
