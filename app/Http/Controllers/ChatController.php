@@ -20,6 +20,7 @@ class ChatController extends Controller
             return redirect()->route('user.index');
         }
         $data['chats'] = $this->chatService->chat(auth()->id(), $request->userid);
+        $data['userInfo'] = $this->chatService->getChatUserInfo($request->userid);
         $data['userId'] = $request->userid;
 
         return view('chat', $data);

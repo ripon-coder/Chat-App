@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Chat;
+use App\Models\User;
 use App\Repositories\Contracts\ChatRepositoryContract;
 
 class ChatRepository implements ChatRepositoryContract
@@ -28,5 +29,9 @@ class ChatRepository implements ChatRepositoryContract
             'receiver_id' => $userId,
             'message' => request()->message,
         ]);
+    }
+    public function getChatUserInfo($userId)
+    {
+        return User::whereKey($userId)->first(['id', 'name', 'email']);
     }
 }

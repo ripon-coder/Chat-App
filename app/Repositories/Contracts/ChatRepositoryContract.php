@@ -7,4 +7,6 @@ interface ChatRepositoryContract
     public function chat($authId, $userId);
 
     public function send($authId, $userId);
+
+    public function getChatUserInfo($userId);
 }

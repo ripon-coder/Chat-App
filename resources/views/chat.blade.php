@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="max-w-md mx-auto h-[500px] flex flex-col border border-gray-300 rounded-xl overflow-hidden">
-
+        <div class="p-4 bg-gray-100 border-b border-gray-300 overflow-fixed">
+            <h2>{{optional($userInfo)->name}}</h2>
+        </div>
         <!-- Chat Messages -->
         <div id="chatMessages" class="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50">
             @foreach ($chats as $chat)

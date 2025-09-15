@@ -25,4 +25,9 @@ class ChatService
 
         return $this->chatRepository->send($authId, $userId);
     }
+
+    public function getChatUserInfo($userId)
+    {
+        return $this->chatRepository->getChatUserInfo($userId);
+    }
 }
